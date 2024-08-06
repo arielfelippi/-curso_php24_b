@@ -38,51 +38,53 @@ for ($i =1; $i <= 100; $i++){
     
 }
 
-///alterar a ordem decrescente numeros pares 
 
-echo "<br>";
-$n = count($vetorPar);
+// Arrays de exemplo
+$vetorPar = [2, 4, 6, 8, 10];  // Exemplo de array de números pares
+$vetorImpar = [1, 3, 5, 7, 9];  // Exemplo de array de números ímpares
 
-// ORDEM DE DECRESCENTE USANDO LAÇO FOR 
+// Ordenar os números pares em ordem decrescente
+$tamanhoPar = count($vetorPar);
+$maxIndicePar = $tamanhoPar - 1;
 
-for ($i = 0; $i < $n - 1; $i++) {
-    for ($j = 0; $j < $n - $i - 1; $j++) {
+for ($i = 0; $i < $maxIndicePar; $i++) {
+    $maxIndicePar_J = $tamanhoPar - $i - 1;
+    for ($j = 0; $j < $maxIndicePar_J; $j++) {
         if ($vetorPar[$j] < $vetorPar[$j + 1]) {
-            // Troca os elementos ordenando os mesmos na ordem correta 
-            $vetor = $vetorPar[$j];
+            // Troca os elementos para ordenar corretamente
+            $temp = $vetorPar[$j];
             $vetorPar[$j] = $vetorPar[$j + 1];
-            $vetorPar[$j + 1] = $vetor;
+            $vetorPar[$j + 1] = $temp;
         }
     }
 }
 
-///alterar a ordem decrescente impares
-$n = count($vetorImpar);
+// Ordenar os números ímpares em ordem decrescente
+$tamanhoImpar = count($vetorImpar);
+$maxIndiceImpar = $tamanhoImpar - 1;
 
-// ORDEM DE DECRESCENTE USANDO LAÇO FOR 
-for ($i = 0; $i < $n - 1; $i++) {
-    for ($j = 0; $j < $n - $i - 1; $j++) {
+for ($i = 0; $i < $maxIndiceImpar; $i++) {
+    $maxIndiceImpar_J = $tamanhoImpar - $i - 1;
+    for ($j = 0; $j < $maxIndiceImpar_J; $j++) {
         if ($vetorImpar[$j] < $vetorImpar[$j + 1]) {
-            // Troca os elementos ordenando os mesmos na ordem correta 
-            $vetor = $vetorImpar[$j];
+            // Troca os elementos para ordenar corretamente
+            $temp = $vetorImpar[$j];
             $vetorImpar[$j] = $vetorImpar[$j + 1];
-            $vetorImpar[$j + 1] = $vetor;
+            $vetorImpar[$j + 1] = $temp;
         }
     }
 }
 
-//fim tema de casa 
-//........................................
-
+// Imprimir os números pares ordenados
 echo "PARES <br>";
-for ($i =0; $i < count($vetorPar); $i++) {
-    echo  $vetorPar[$i]. ",";
+for ($i = 0; $i < $tamanhoPar; $i++) {
+    echo $vetorPar[$i] . ",";
 }
 
 echo "<br>";
-echo "IMPARES <br>";
 
-for ($i =0; $i < count($vetorImpar); $i++) {
-    
-    echo  $vetorImpar[$i]. ",";
+// Imprimir os números ímpares ordenados
+echo "IMPARES <br>";
+for ($i = 0; $i < $tamanhoImpar; $i++) {
+    echo $vetorImpar[$i] . ",";
 }
