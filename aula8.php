@@ -25,7 +25,7 @@ for ($i = 0; $i < $maxIndice; $i++) {
     }
 }
 
-echo implode(", ", $vetorAlfa);
+// echo implode(", ", $vetorAlfa);
 
 // function implodeX($separator, $array) {
 
@@ -54,7 +54,21 @@ echo implode(", ", $vetorAlfa);
  Trinagulos a considerar: Equilatero, Isoceles ou escaleno.
 */ 
 
-$lado1 = 0;
-$lado2 = 0;
-$lado3 = 0;
+$lado1 = 10;
+$lado2 = 20;
+$lado3 = 30;
+
+
+if ($lado1 == $lado2 && $lado1 == $lado3) {
+    echo "equilatero";
+} else if ( ($lado1 == $lado2 && $lado1 != $lado3) || 
+            ($lado2 == $lado3 && $lado2 != $lado1) ||
+            ($lado3 == $lado1 && $lado3 != $lado2)
+        ) {
+            echo "isoceles";
+} else if ($lado1 != $lado2 && $lado1 != $lado3 && $lado2 != $lado3) {
+    echo "escaleno";
+ } else {
+    echo "As medidas nao formam um triangulo.";
+ }
 
