@@ -39,13 +39,27 @@ $valor = 10;
         $resultado = $valor1 / $valor2;
     }
 
+    if ($operador == '%' ) {
+        $resultado = $valor1 * $valor2 / 100;
+    }
+
     return $resultado;
  }
 
- $valor1 = 10;
- $operador = "*";
+ $valor1 = 100;
+ $operador = "%";
  $valor2 = 10;
 
  $resultado = calculadora($valor1, $operador, $valor2);
 
-echo "O resultado de: $valor1 $operador $valor2 = $resultado";
+// echo "O resultado de: $valor1 $operador $valor2 = $resultado";
+
+
+/**
+ * UTILIZAR FUNCOES
+ * Crie um sistema bancario contendo as seguintes operacoes:
+ * 
+ * Deposito, Saque, Extrato(saldo)
+ * 
+ */
+
