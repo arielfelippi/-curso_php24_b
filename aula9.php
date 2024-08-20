@@ -63,7 +63,6 @@ $valor = 10;
  * 
  */
 
-
 function banco($valor, $operacao, $saldoAtual) {
 
     $saldo = $saldoAtual;
@@ -71,17 +70,37 @@ function banco($valor, $operacao, $saldoAtual) {
     if ($operacao == "extrato") {
         return $saldo;
     }
+
+    if ($operacao == "saque") {
+        // $saldo = $saldo - $valor;
+        $saldo -= $valor;
+    }
+
+    if ($operacao == "deposito") {
+        // $saldo = $saldo + $valor;
+        $saldo += $valor;
+    }
     
     return $saldo;
 }
 
-$saldoAtual = 50;
+$saldoAtual = 500; // tem um valor inicial de 500.
+echo "Valor inicial: $saldoAtual<br>";
+
 $valor = 100;
 $operacao = "deposito";
-
 $saldoAtual = banco($valor, $operacao, $saldoAtual);
-echo "Extrato: $valor $operacao = $saldoAtual<br>";
+echo "$operacao = $valor, Extrato: $saldoAtual<br>";
 
+$valor = 200;
 $operacao = "saque";
 $saldoAtual = banco($valor, $operacao, $saldoAtual);
-echo "Extrato: $valor $operacao = $saldoAtual<br>";
+echo "$operacao = $valor, Extrato: $saldoAtual<br>"; // 400
+
+$valor = 600;
+$operacao = "saque";
+$saldoAtual = banco($valor, $operacao, $saldoAtual);
+echo "$operacao = $valor, Extrato: $saldoAtual<br>";
+
+
+
