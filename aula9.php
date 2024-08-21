@@ -61,20 +61,39 @@ $valor = 10;
  * 
  * Deposito, Saque, Extrato(saldo)
  * 
+ * Validar depositos em branco (<=0 || '')
+ * Validar o saque, valor > saldo || valor em branco (<=0 || '')
+ * 
  */
 
 function banco($valor, $operacao, $saldoAtual) {
 
     $saldo = $saldoAtual;
 
+    $valorInvalido = ($valor < 0 || empty($valor)); // < 0, 0 || '' == true
+
     if ($operacao == "extrato") {
         return $saldo;
     }
 
+    // empty() == 0, '', null , false = true 
+    if ($operacao == "deposito" && $valorInvalido ) {
+        return "Não é possivel efetuar o saque, informe um valor.";
+    }
+
+    if ($operacao == "saque" && $valorInvalido ) {
+        return "Não é possivel efetuar o saque, informe um valor.";
+    }
+    
+    if ($operacao == "saque" && $valor > $saldoAtual ) {
+        return "Não é possivel efetuar o saque, seu saldo é: $saldoAtual  o valor sacado é: $valor";
+    }
+    
     if ($operacao == "saque") {
         // $saldo = $saldo - $valor;
         $saldo -= $valor;
     }
+
 
     if ($operacao == "deposito") {
         // $saldo = $saldo + $valor;
