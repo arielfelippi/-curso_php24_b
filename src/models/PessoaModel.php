@@ -2,13 +2,13 @@
 
 require '../database/Conexao.php';
 
-class UsuarioModel {
+class PessoaModel {
 
     private $fields = [
         'id',
         'cpf',
         'email',
-        'senha',
+        'nome',
         'excluido',
         'usuario_alteracao',
         'data_criacao',
