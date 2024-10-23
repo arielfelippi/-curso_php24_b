@@ -1,6 +1,6 @@
 <?php
 
-require '../models/UsuarioModel.php';
+require_once '../models/UsuarioModel.php';
 
 class UsuarioController {
 
@@ -14,13 +14,21 @@ class UsuarioController {
     public function create($dadosUsuario) {
         
         $this->validaCPF($dadosUsuario['cpf']);
-        $this->validaSenha($vadadosUsuariolues['cpf']);
+        $this->validaSenha($dadosUsuario['cpf']);
         $this->validaEmail($dadosUsuario['cpf']);
 
         $this->usuarioModel->create($dadosUsuario);
     }
 
     private function validaCPF($cpf) {
+        // codigo para validar o cpf
+    }
+
+    private function validaSenha($cpf) {
+        // codigo para validar o cpf
+    }
+
+    private function validaEmail($cpf) {
         // codigo para validar o cpf
     }
 }
