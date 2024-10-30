@@ -19,6 +19,7 @@ class UsuarioModel extends BaseModel {
         $sql = ("INSERT INTO {$this->table} ({$this->fieldsSTR}) VALUES ({$this->valuesSTR});");
         // INSERT INTO {$this->table} ('cpf','email','senha','excluido') VALUES ('546546654', 'fulanmo@email.com'...)
 
+
         return $this->execute($sql);
 
     }
@@ -47,7 +48,7 @@ class UsuarioModel extends BaseModel {
 
         $this->updateAdjust($values);
 
-        $sql = ("UPDATE {$this->table} SET $this->fieldsSTR WHERE id = {$id};");
+        $sql = ("UPDATE {$this->table} SET $this->fieldsSTR WHERE id = '{$id}';");
         // UPDATE USUARIOS SET cpf = '123456', email = 'novoEmail@trallala.com' WHERE id = 1;
 
         return $this->execute($sql);
@@ -56,23 +57,55 @@ class UsuarioModel extends BaseModel {
 
     public function delete($id) {
         $sql = ("DELETE FROM {$this->table} WHERE id = {$id};");
-        // DELETE FROM Usuarios WHERE id = ???; // 2
+        // DELETE FROM Usuarios WHERE id = 2
 
         return $this->execute($sql);
     }
 
+    public function deleteMany($ids) {
+        $ids = implode(",", $ids);
+
+        $sql = ("DELETE FROM {$this->table} WHERE id IN ({$ids});");
+        // DELETE FROM Usuarios WHERE id IN (2,3,5,6)
+
+        return $this->execute($sql);
+    }
+
+
 }
 
-$usuario = new UsuarioModel();
+$usuarioModel = new UsuarioModel();
 
-$dados = $usuario->readAll();
+
+$dadosUsuario = [
+    'cpf' => '12345678900',
+    'email' => 'beltrano@tralala.com',
+    'senha' => 1234,
+];
+
+// $usuarioModel->update(2, $dadosUsuario);
+$ids = [
+    4,
+    5,
+];
+
+$usuarioModel->deleteMany($ids);
+
+
+$dados = $usuarioModel->readAll();
 
 
 if ( !empty($dados) ) {
 
-    foreach($dados[0] as $field => $value) {
+    foreach ($dados as $idx => $registro) {
 
-        echo "{$field}:  {$value} <br>";
+        foreach($registro as $field => $value) {
+    
+            echo "{$field}:  {$value} <br>";
+        }
+
+        echo "<br>";
     }
+
 }
 

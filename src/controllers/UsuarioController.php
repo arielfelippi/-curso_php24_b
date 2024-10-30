@@ -34,6 +34,9 @@ class UsuarioController {
 }
 
 
+$userController = new UsuarioController();
+
+
 /*
    NO CONTROLLER USUARIO:
 
